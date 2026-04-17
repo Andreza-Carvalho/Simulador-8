@@ -1,0 +1,140 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: Scratch Pad
+meta:
+  id: wrk_scratchpad
+  created: 1775594426388
+  modified: 1775594426388
+  description: ""
+collection:
+  - url: " http://localhost:3333/movies"
+    name: Postar filme
+    meta:
+      id: req_0b57c97f0368487eb74c7083421c3661
+      created: 1776283685494
+      modified: 1776360724087
+      isPrivate: false
+      description: ""
+      sortKey: -1776283685494
+    method: POST
+    body:
+      mimeType: application/json
+      text: >-
+        {
+            "title": "Mad Max: Estrada da Fúria",
+            "description": "Em um futuro pós-apocalíptico, uma mulher se rebela contra um governante tirânico em busca de sua terra natal com a ajuda de um andarilho chamado Max.",
+            "year": 2015,
+            "genre": ["Ação", "Aventura", "Ficção Científica"],
+            "image": "https://exemplo.com/imagens/mad-max.jpg",
+            "video": "https://exemplo.com/trailers/mad-max.mp4"
+          }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/12.5.0
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:3333/movies
+    name: Listar filme
+    meta:
+      id: req_261e041665234289a441fbc2ebea75b6
+      created: 1776283714217
+      modified: 1776357115316
+      isPrivate: false
+      description: ""
+      sortKey: -1776283714217
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/12.5.0
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:3333/movies/89
+    name: Editar Filme
+    meta:
+      id: req_f9c614bcc2164163b73a04e0f4a3d278
+      created: 1776357145426
+      modified: 1776360908469
+      isPrivate: false
+      description: ""
+      sortKey: -1776357145426
+    method: PUT
+    body:
+      mimeType: application/json
+      text: >2-
+          {
+            "title": "O Labirinto do Fauno",
+            "description": "Na Espanha fascista de 1944, a jovem Ofélia descobre um mundo de fantasia sombrio e misterioso que a leva a cumprir três tarefas perigosas.",
+            "year": 2004,
+            "genre": ["Fantasia", "Drama", "Terror"],
+            "image": "https://exemplo.com/imagens/pan-labyrinth.jpg",
+            "video": "https://exemplo.com/trailers/pan-labyrinth.mp4"
+          }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/12.5.0
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:3333/movies/89
+    name: Delete filme
+    meta:
+      id: req_d99f6bd2cda147e08291f762a6ed9a81
+      created: 1776360109616
+      modified: 1776360904147
+      isPrivate: false
+      description: ""
+      sortKey: -1776360109616
+    method: DELETE
+    headers:
+      - name: User-Agent
+        value: insomnia/12.5.0
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_99d30891da4bdcebc63947a8fc17f076de878684
+    created: 1776100551234
+    modified: 1776100551234
+environments:
+  name: Base Environment
+  meta:
+    id: env_99d30891da4bdcebc63947a8fc17f076de878684
+    created: 1776100551228
+    modified: 1776100551228
+    isPrivate: false
