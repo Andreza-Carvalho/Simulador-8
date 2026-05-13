@@ -2,12 +2,13 @@
   "scripts": {
     "dev": "nodemon src/server.js"
   },
-  "name": "Simulador",
-  "packageManager": "yarn@4.12.0",
   "dependencies": {
-    "express": "^5.2.1"
-  },
-  "devDependencies": {
+    "express": "^5.2.1",
+    "mongoose": "^9.6.1",
     "nodemon": "^3.1.14"
-  }
+  },
+  "name": "Simulador",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT"
 }

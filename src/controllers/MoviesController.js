@@ -1,63 +1,39 @@
-let movies = [];
+const Movie = require('../models/movie'); 
 
 class MoviesController {
-  index(request, response) {
+  // LISTAR (GET)
+  async index(request, response) {
+    const movies = await Movie.find(); 
     return response.json(movies);
   }
 
-  create(request, response) {
+  // CRIAR (POST)
+  async create(request, response) {
     const { title, description, director, year, genre, image, video } = request.body;
 
-    const newMovie = {
-      id: Math.floor(Math.random() * 1000),
-      title,
-      description,
-      director,
-      year,
-      genre,
-      image,
-      video
-    };
-
-    movies.push(newMovie);
+    // Salva no banco. O Mongoose gera o ID sozinho!
+    const newMovie = await Movie.create({
+      title, description, director, year, genre, image, video
+    });
 
     return response.status(201).json(newMovie);
   }
-  
-  update(request, response) {
-    const { id } = request.params; 
-    const { title, description, director, year, genre, image, video } = request.body; 
 
-    const movieIndex = movies.findIndex(movie => movie.id === Number(id));
+  // ATUALIZAR (PUT)
+  async update(request, response) {
+    const { id } = request.params; // O ID agora é aquele código do MongoDB
+    const data = request.body;
 
-    if (movieIndex === -1) {
-      return response.status(404).json({ message: "Filme não encontrado" });
-    }
+    // Busca pelo ID e atualiza. { new: true } retorna o filme já modificado
+    const updatedMovie = await Movie.findByIdAndUpdate(id, data, { new: true });
 
-    movies[movieIndex] = {
-      id: Number(id),
-      title: title || movies[movieIndex].title,
-      description: description || movies[movieIndex].description,
-      director: director || movies[movieIndex].director,
-      year: year || movies[movieIndex].year,
-      genre: genre || movies[movieIndex].genre,
-      image: image || movies[movieIndex].image,
-      video: video || movies[movieIndex].video
-    };
-
-    return response.json(movies[movieIndex]);
+    return response.json(updatedMovie);
   }
 
-  delete(request, response) {
+  // DELETAR (DELETE)
+  async delete(request, response) {
     const { id } = request.params;
-    const movieIndex = movies.findIndex(movie => movie.id === Number(id));
-
-    if (movieIndex === -1) {
-      return response.status(404).json({ message: "Filme não encontrado" });
-    }
-
-    movies.splice(movieIndex, 1);
-
+    await Movie.findByIdAndDelete(id); // Remove do banco permanentemente
     return response.status(204).send();
   }
 }
